@@ -20,7 +20,7 @@ authrouter.post('/signup', async (req,res)=>{
        const savedUser= await user.save();
        const token =await savedUser.getJwt();
 
-       res.cookie("token",token, {maxAge: 9000000});
+       res.cookie("token",token, {maxAge: 9000000,sameSite: 'None'});
         res.json({message : "New user created successfully",data:savedUser});
     }
     catch(err){
@@ -39,7 +39,7 @@ authrouter.post('/login', async (req,res) => {
         const isPassword= await user.validatePassword(password);
         if(isPassword){
             const token =await user.getJwt();
-            res.cookie("token",token, {maxAge: 9000000});
+            res.cookie("token",token, {maxAge: 9000000, sameSite: 'None',});
             res.send(user);
         }
         else{

@@ -20,7 +20,7 @@ authrouter.post('/signup', async (req,res)=>{
        const savedUser= await user.save();
        const token =await savedUser.getJwt();
 
-       res.cookie("token",token, {maxAge: 9000000});
+       res.cookie("token",token, {maxAge: 9000000},{ sameSite: 'None', secure: true });
         res.json({message : "New user created successfully",data:savedUser});
     }
     catch(err){

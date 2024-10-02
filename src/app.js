@@ -10,7 +10,7 @@ const PORT=process.env.port || 8080;
 
 
 app.use(cors({
-    origin: "https://devfinder-fe.onrender.com",
+    origin: "https://devfinder-fe.onrender.com/",
     credentials: true,
     methods: ['GET', 'POST', 'PATCH', 'DELETE'],
 }

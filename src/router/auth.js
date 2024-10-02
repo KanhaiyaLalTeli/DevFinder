@@ -39,7 +39,7 @@ authrouter.post('/login', async (req,res) => {
         const isPassword= await user.validatePassword(password);
         if(isPassword){
             const token =await user.getJwt();
-            res.cookie("token",token, {maxAge: 9000000});
+            res.cookie("token",token, {maxAge: 9000000},{ sameSite: 'None', secure: true });
             res.send(user);
         }
         else{
